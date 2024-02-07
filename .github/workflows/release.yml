@@ -26,7 +26,7 @@ jobs:
           echo "AZ_DOCKER_REGISTRY=${registry}" >> ${GITHUB_ENV}
           echo "AZ_OLD_HASH=${oldhash}" >> ${GITHUB_ENV}
           echo "AZ_IMAGE_STEM=${imagestem}" >> ${GITHUB_ENV}
-          echo "AZ_ICONS_SOURCE_DIR=az-icons-src" >> ${GITHUB_ENV}
+          echo "AZ_ICONS_SOURCE_DIR=/az-icons-src" >> ${GITHUB_ENV}
           echo "AZ_ICONS_FROZEN_DIR=/azbuild/az-icons" >> ${GITHUB_ENV}
 
       - name: Set up Docker Buildx
