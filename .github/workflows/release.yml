@@ -75,10 +75,6 @@ jobs:
           release_name: "v${{ env.AZ_VERSION }}"
           draft: false
           prerelease: false
-          files: |
-            dist/*
-            package.json
-            package-lock.json
           body: |
             Release v${{ env.AZ_VERSION }}
 
