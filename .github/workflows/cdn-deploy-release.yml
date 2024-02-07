@@ -1,4 +1,5 @@
 name: Deploy CDN assets for release
+run-name: Deploy CDN assets to the `${{ github.event.inputs.version }}` and `latest` buckets
 on:
   repository_dispatch:
     types: az_icons_release
