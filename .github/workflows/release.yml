@@ -70,9 +70,10 @@ jobs:
         id: create_release
         uses: softprops/action-gh-release@v1
         with:
+          target_commitish: ${{ env.RELEASE_SHA }}
           token: ${{ secrets.GITHUB_TOKEN }}
           tag_name: "v${{ env.AZ_VERSION }}"
-          release_name: "v${{ env.AZ_VERSION }}"
+          name: "v${{ env.AZ_VERSION }}"
           draft: false
           prerelease: false
           body: |
@@ -110,7 +111,7 @@ jobs:
           echo "BRANCH_NAME=${GITHUB_REF_NAME}" >> ${GITHUB_ENV}
 
       - name: Notify dependencies
-        uses: peter-evans/repository-dispatch@v2
+        uses: peter-evans/repository-dispatch@v3
         with:
           token: ${{ secrets.REPO_DISPATCH_TOKEN }}
           repository: ${{ matrix.repo }}
