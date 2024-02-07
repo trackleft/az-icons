@@ -90,8 +90,8 @@ jobs:
     strategy:
       matrix:
         repo:
-          - az-digital/az-icons
-          - az-digital/az-icons-packagist
+          - trackleft/az-icons
+          - trackleft/az-icons-packagist
 
     runs-on: ubuntu-latest
     steps:
@@ -110,5 +110,4 @@ jobs:
           token: ${{ secrets.REPO_DISPATCH_TOKEN }}
           repository: ${{ matrix.repo }}
           event-type: az_icons_release
-          client-payload: '{"version": "${{ github.event.inputs.version }}",
-          "ref": "${{ env.RELEASE_SHA }}", "sha": "${{ env.RELEASE_SHA }}"}'
+          client-payload: '{"version": "${{ github.event.inputs.version }}", "ref": "${{ env.RELEASE_SHA }}", "sha": "${{ env.RELEASE_SHA }}"}'
