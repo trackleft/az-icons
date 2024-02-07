@@ -20,14 +20,23 @@ COPY "package.json" "$AZ_ICONS_FROZEN_DIR"/
 
 RUN apt-get update \
   && apt-get install --no-install-recommends -y \
+  ca-certificates-java \
+  curl \
   git \
-  python3 \
-  python3-pip \
-  python3-setuptools \
-  python3-wheel \
+  jq \
+  openjdk-17-jre-headless \
   rsync \
+  unzip \
   && rm -rf /var/lib/apt/lists/* \
-  && pip3 install 'awscli~=1.19.41';
+  && chmod 755 /root \
+  && touch /root/.npmrc \
+  && chmod 644 /root/.npmrc \
+  && npm install --location=global npm-check-updates@16.14.12 \
+  && curl 'https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip' -o /tmp/awscliv2.zip \
+  && unzip -d /tmp /tmp/awscliv2.zip \
+  && /tmp/aws/install \
+  && rm /tmp/awscliv2.zip \
+  && rm -Rf /tmp/aws
 
 WORKDIR $AZ_ICONS_FROZEN_DIR
 
